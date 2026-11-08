@@ -55,3 +55,7 @@ The tests cover:
 - saving sets by name.
 
 Later: rules used as chatbot replies, with Claude only as an optional fallback.
+
+## Inputs and outputs
+
+`io/ios.txt` lists 200 inputs and the outputs they give, from real runs of this repo's functions (the list of functions is in `io/cases.mjs`; the inputs come from a fixed seed, so they are the same every time). `npm test` runs them again and fails if any output changes. If a change is meant, run `npm run ios` to write the new outputs and check the diff.

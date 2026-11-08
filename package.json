@@ -4,6 +4,9 @@
   "description": "Chatbot App Authorer: rewrite rules learned from start and finish examples, shown, proved and applied (a Lucian Office plug-in, used in Writer)",
   "type": "module",
   "main": "plugin.js",
-  "scripts": { "test": "node --test test/*.test.js" },
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "ios": "node io/make-ios.mjs"
+  },
   "license": "BSD-3-Clause"
 }
