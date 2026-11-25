@@ -62,3 +62,17 @@ test("applying rules to a document is one step, recorded as the Authorer's, and 
   assert.equal((await tool.run(day, 'upbeat')).doc.blocks[0].text, 'A great day, a poor night.');
   assert.match((await tool.run(day, 'formal')).say, /don't have rules called formal/);
 });
+
+test('a word of context keeps replacements that the examples tell apart', () => {
+  const pairs = [['hello friend', 'hi friend'], ['hello world', 'hey world']];
+  const rules = learnRules(pairs);
+  assert.deepEqual(rules.map((r) => [r.find, r.replace]), [['hello friend', 'hi friend'], ['hello world', 'hey world']]);
+  assert.equal(proveRules(rules, pairs).passed, 2);
+});
+
+test('replacements nothing tells apart keep the most frequent, with a note', () => {
+  const rules = learnRules([['hello there', 'hi there'], ['hello there', 'hey there'], ['hello there', 'hi there']]);
+  assert.equal(rules.length, 1);
+  assert.equal(rules[0].replace, 'hi there');
+  assert.match(rules[0].note, /hey/);
+});
