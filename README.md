@@ -8,6 +8,7 @@ The Chatbot App Authorer learns text rules from examples. It is a [Lucian Office
    - Each changed run becomes a rule "find → replace".
    - Rules seen in several examples are counted.
    - A rule that would also fire where an example didn't change gets a word of context, so it fires only where it should.
+   - When examples change the same words in different ways ("hello friend" → "hi friend", "hello world" → "hey world"), a word of context tells the rules apart if that makes more examples pass. Otherwise the most frequent change is kept, with a note naming the others.
 3. The rules are shown in a table. You can edit them and switch each one on or off.
 4. They are **proved on your examples**: each start, rewritten, must give its finish. Any that don't are listed.
 5. Use the rules:
